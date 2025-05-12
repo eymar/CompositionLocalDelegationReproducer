@@ -17,6 +17,15 @@ kotlin {
         binaries.executable()
     }
 
+    macosArm64 {
+        binaries.executable {
+            entryPoint = "org.company.app.main"
+            freeCompilerArgs += listOf(
+                "-linker-option", "-framework", "-linker-option", "Metal"
+            )
+        }
+    }
+
     sourceSets {
         commonMain.dependencies {
             implementation(compose.runtime)
